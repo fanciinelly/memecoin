@@ -24,7 +24,8 @@ export default function LaunchDetailPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/launches/${id}`)
+    // fetch(`http://localhost:4000/launches/${id}`)
+    fetch(`https://memebreaker-backend-production.up.railway.app/launches/${id}`)
       .then((res) => res.json())
       .then((data) => setLaunch(data))
       .catch(() => setError("Failed to fetch coin details"))

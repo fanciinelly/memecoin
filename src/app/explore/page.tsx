@@ -21,7 +21,8 @@ export default function ExplorePage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/launches")
+    // fetch("http://localhost:4000/launches")
+    fetch("https://memebreaker-backend-production.up.railway.app/launches")
       .then((res) => res.json())
       .then((data) => setLaunches(data))
       .catch(() => setError("Failed to fetch launches"))
