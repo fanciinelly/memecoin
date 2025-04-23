@@ -9,7 +9,8 @@ import {
   Contract,
   formatEther,
   parseEther,
-  Eip1193Provider
+  Eip1193Provider,
+  JsonRpcSigner
 } from "ethers";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
@@ -24,7 +25,7 @@ const abi = [
 export default function InteractPage() {
   const { address } = useParams();
   const [provider, setProvider] = useState<BrowserProvider | null>(null);
-  const [signer, setSigner] = useState<any>(null);
+  const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
   const [name, setName] = useState("");
   const [symbol, setSymbol] = useState("");
   const [supply, setSupply] = useState("");
@@ -40,7 +41,8 @@ export default function InteractPage() {
     const ethProvider = new BrowserProvider(window.ethereum as unknown as Eip1193Provider);
     await ethProvider.send("eth_requestAccounts", []);
     setProvider(ethProvider);
-    setSigner(await ethProvider.getSigner());
+    const signer = await ethProvider.getSigner();
+    setSigner(signer);
   };
 
   const handleTransfer = async () => {
@@ -64,7 +66,7 @@ export default function InteractPage() {
 
       contract.name().then(setName);
       contract.symbol().then(setSymbol);
-      contract.totalSupply().then((s: any) => setSupply(formatEther(s)));
+      contract.totalSupply().then((s) => setSupply(formatEther(s)));
       contract.decimals().then(setDecimals);
 
       setStats([

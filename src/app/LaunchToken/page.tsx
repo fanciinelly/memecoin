@@ -11,9 +11,9 @@ import { PiChartLineUpBold } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { MdCurrencyExchange } from "react-icons/md";
 // import { FaXTwitter, FaInstagram } from "react-icons/fa6";
-import { LiaTelegram } from "react-icons/lia";
-import { AiOutlineDiscord } from "react-icons/ai";
-import { TbBrandTiktok } from "react-icons/tb";
+// import { LiaTelegram } from "react-icons/lia";
+// import { AiOutlineDiscord } from "react-icons/ai";
+// import { TbBrandTiktok } from "react-icons/tb";
 
 export default function LaunchToken() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
